@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Detailstyle } from "../style/Detailstyle";
 import {
@@ -6,8 +6,11 @@ import {
   ButtonStyle,
   ButtonContainer,
 } from "../style/ReceiptStyle";
+import { ListContext } from "../context/ListContext";
 
-const Detail = ({ list, setList }) => {
+const Detail = () => {
+  const { list, setList } = useContext(ListContext);
+
   const { id } = useParams();
   const navigate = useNavigate();
   const [item, setItem] = useState(null);
@@ -96,11 +99,10 @@ const Detail = ({ list, setList }) => {
             onChange={(e) => setContent(e.target.value)}
           />
         </div>
-        <ButtonContainer>
-          <ButtonStyle onClick={handleUpdate}>수정</ButtonStyle>
-          <ButtonStyle onClick={handleDelete}>삭제</ButtonStyle>
-          <ButtonStyle onClick={() => navigate("/")}>뒤로가기</ButtonStyle>
-        </ButtonContainer>
+        <ButtonContainer></ButtonContainer>
+        <button onClick={handleUpdate}>수정</button>
+        <button onClick={handleDelete}>삭제</button>
+        <button onClick={() => navigate("/")}>뒤로가기</button>
       </Detailstyle>
     </>
   );

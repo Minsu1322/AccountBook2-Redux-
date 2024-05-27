@@ -1,10 +1,11 @@
 import React from "react";
 import InputForm from "../components/InputForm";
+import { ListContext } from "../context/ListContext";
 
-const Home = ({ list, setList }) => {
+const Home = () => {
   return (
     <div>
-      <InputForm list={list} setList={setList} />
+      <InputForm />
     </div>
   );
 };

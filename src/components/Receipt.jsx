@@ -22,7 +22,6 @@ const Receipt = ({ list, setList, selectedMonth }) => {
     const formattedMonth = month.startsWith("0") ? month.slice(1) : month;
     return formattedMonth === selectedMonth.toString();
   });
-  //          <Link to={`/detail/${entry.id}`}>{entry.item}</Link>
 
   return (
     <div>

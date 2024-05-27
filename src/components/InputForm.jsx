@@ -1,10 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { InputFormStyle } from "../style/InputFormStyle";
 import Receipt from "./Receipt";
 import Calender from "./Calender";
 import { v4 as uuidv4 } from "uuid";
+import { ListContext } from "../context/ListContext";
 
-const InputForm = ({ list, setList }) => {
+const InputForm = () => {
+  const { list, setList } = useContext(ListContext);
+
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [price, setPrice] = useState(0);
