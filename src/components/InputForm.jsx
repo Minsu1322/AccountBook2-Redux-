@@ -7,12 +7,12 @@ import { ListContext } from "../context/ListContext";
 
 const InputForm = () => {
   const { list, setList } = useContext(ListContext);
+  const { selectedMonth, setSelectedMonth } = useContext(ListContext);
 
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
   const [price, setPrice] = useState(0);
   const [content, setContent] = useState("");
-  const [selectedMonth, setSelectedMonth] = useState(null);
 
   useEffect(() => {
     const storedList = localStorage.getItem("buyList");
@@ -99,11 +99,8 @@ const InputForm = () => {
         </div>
         <button type="submit">저장</button>
       </InputFormStyle>
-      <Calender
-        selectedMonth={selectedMonth}
-        setSelectedMonth={setSelectedMonth}
-      />
-      <Receipt list={list} setList={setList} selectedMonth={selectedMonth} />
+      <Calender />
+      <Receipt />
     </>
   );
 };

@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import {
   ReceiptStyle,
   ButtonStyle,
   ButtonContainer,
 } from "../style/ReceiptStyle";
 import { Link } from "react-router-dom";
+import { ListContext } from "../context/ListContext";
 
-const Receipt = ({ list, setList, selectedMonth }) => {
+const Receipt = () => {
+  const { list, setList } = useContext(ListContext);
+  const { selectedMonth, setSelectedMonth } = useContext(ListContext);
   if (selectedMonth === null) {
     return <div>월을 선택해주세요</div>;
   }
