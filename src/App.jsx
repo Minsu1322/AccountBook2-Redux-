@@ -4,11 +4,15 @@ import Calender from "./components/Calender";
 import Receipt from "./components/Receipt";
 import Home from "./pages/Home";
 import Router from "./shared/Router";
+import { Provider } from "react-redux";
+import store from "./redux/config/configStore";
 
 const App = () => {
   return (
     <div>
-      <Router />
+      <Provider store={store}>
+        <Router />
+      </Provider>
     </div>
   );
 };

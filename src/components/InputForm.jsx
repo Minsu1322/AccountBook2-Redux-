@@ -99,8 +99,11 @@ const InputForm = () => {
         </div>
         <button type="submit">저장</button>
       </InputFormStyle>
-      <Calender />
-      <Receipt />
+      <Calender
+        selectedMonth={selectedMonth}
+        setSelectedMonth={setSelectedMonth}
+      />
+      <Receipt list={list} setList={setList} selectedMonth={selectedMonth} />
     </>
   );
 };
