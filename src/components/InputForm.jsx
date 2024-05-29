@@ -3,11 +3,14 @@ import { InputFormStyle } from "../style/InputFormStyle";
 import Receipt from "./Receipt";
 import Calender from "./Calender";
 import { v4 as uuidv4 } from "uuid";
-import { ListContext } from "../context/ListContext";
+// import { ListContext } from "../context/ListContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, setList } from "../redux/slices/listSlice";
 
 const InputForm = () => {
-  const { list, setList } = useContext(ListContext);
-  const { selectedMonth, setSelectedMonth } = useContext(ListContext);
+  const list = useSelector((state) => state.list.list);
+  const dispatch = useDispatch();
+  const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
@@ -17,7 +20,7 @@ const InputForm = () => {
   useEffect(() => {
     const storedList = localStorage.getItem("buyList");
     if (storedList) {
-      setList(JSON.parse(storedList));
+      dispatch(setList(JSON.parse(storedList)));
     }
   }, []);
 
@@ -41,9 +44,9 @@ const InputForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const updatedList = [...list, buyList];
-    setList(updatedList);
-    localStorage.setItem("buyList", JSON.stringify(updatedList));
+    dispatch(addItem(buyList));
+    // setList(updatedList);
+    localStorage.setItem("buyList", JSON.stringify([...list, buyList]));
   };
 
   return (
@@ -100,10 +103,12 @@ const InputForm = () => {
         <button type="submit">저장</button>
       </InputFormStyle>
       <Calender
-        selectedMonth={selectedMonth}
-        setSelectedMonth={setSelectedMonth}
+      // selectedMonth={selectedMonth}
+      // setSelectedMonth={setSelectedMonth}
       />
-      <Receipt list={list} setList={setList} selectedMonth={selectedMonth} />
+      <Receipt
+      // list={list} setList={setList} selectedMonth={selectedMonth}
+      />
     </>
   );
 };

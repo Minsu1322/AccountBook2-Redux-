@@ -6,10 +6,13 @@ import {
   ButtonStyle,
   ButtonContainer,
 } from "../style/ReceiptStyle";
-import { ListContext } from "../context/ListContext";
+// import { ListContext } from "../context/ListContext";
+import { useDispatch, useSelector } from "react-redux";
+import { addItem, setList, removeItem } from "../redux/slices/listSlice";
 
 const Detail = () => {
-  const { list, setList } = useContext(ListContext);
+  const list = useSelector((state) => state.list.list);
+  const dispatch = useDispatch();
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -40,14 +43,14 @@ const Detail = () => {
         ? { ...entry, date, item: itemName, price, content }
         : entry
     );
-    setList(updatedList);
+    dispatch(addItem(updatedList));
     localStorage.setItem("buyList", JSON.stringify(updatedList));
     navigate("/");
   };
 
   const handleDelete = () => {
     const updatedList = list.filter((entry) => entry.id !== id);
-    setList(updatedList);
+    dispatch(removeItem(updatedList));
     localStorage.setItem("buyList", JSON.stringify(updatedList));
     navigate("/");
   };

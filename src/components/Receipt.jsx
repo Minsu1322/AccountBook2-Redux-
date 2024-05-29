@@ -5,22 +5,27 @@ import {
   ButtonContainer,
 } from "../style/ReceiptStyle";
 import { Link } from "react-router-dom";
-import { ListContext } from "../context/ListContext";
+// import { ListContext } from "../context/ListContext";
+import { useDispatch, useSelector } from "react-redux";
+import { removeItem } from "../redux/slices/listSlice";
 
 const Receipt = () => {
-  const { list, setList } = useContext(ListContext);
-  const { selectedMonth, setSelectedMonth } = useContext(ListContext);
+  const list = useSelector((state) => state.list.list);
+  const dispatch = useDispatch();
+  const selectedMonth = useSelector((state) => state.month.selectedMonth);
+
   if (selectedMonth === null) {
     return <div>월을 선택해주세요</div>;
   }
 
   const handleDelete = (id) => {
+    dispatch(removeItem(id));
     const updatedList = list.filter((item) => item !== id);
-    setList(updatedList);
     localStorage.setItem("buyList", JSON.stringify(updatedList));
   };
 
   const filteredList = list.filter((e) => {
+    if (!e.date) return false;
     const month = e.date.split("-")[1];
     const formattedMonth = month.startsWith("0") ? month.slice(1) : month;
     return formattedMonth === selectedMonth.toString();
@@ -40,7 +45,9 @@ const Receipt = () => {
             <Link to={`/detail/${entry.id}`}>
               <ButtonStyle>상세</ButtonStyle>
             </Link>
-            <ButtonStyle onClick={() => handleDelete(entry)}>삭제</ButtonStyle>
+            <ButtonStyle onClick={() => handleDelete(entry.id)}>
+              삭제
+            </ButtonStyle>
           </ButtonContainer>
         </ReceiptStyle>
       ))}

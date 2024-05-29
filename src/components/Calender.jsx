@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
 import { CalenderContainer, MonthButton } from "../style/CalenderStyle";
-import { ListContext } from "../context/ListContext";
+// import { ListContext } from "../context/ListContext";
+import { useDispatch, useSelector } from "react-redux";
+import { setSelectedMonth } from "../redux/slices/monthSlice";
 
 const Calender = () => {
   const [month, setMonth] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]);
-  const { selectedMonth, setSelectedMonth } = useContext(ListContext);
+  const dispatch = useDispatch();
+  const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
   return (
     <CalenderContainer>
@@ -13,7 +16,7 @@ const Calender = () => {
           <MonthButton
             key={mon}
             $isSelected={selectedMonth == mon}
-            onClick={() => setSelectedMonth(mon)}
+            onClick={() => dispatch(setSelectedMonth(mon))}
           >
             {mon}월
           </MonthButton>
