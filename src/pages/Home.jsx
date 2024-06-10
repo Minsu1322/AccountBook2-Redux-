@@ -1,12 +1,12 @@
 import React from "react";
 import InputForm from "../components/InputForm";
-import { ListContext } from "../context/ListContext";
+import { StHomeDiv } from "../style/HomeStyle";
 
 const Home = () => {
   return (
-    <div>
+    <StHomeDiv>
       <InputForm />
-    </div>
+    </StHomeDiv>
   );
 };
 

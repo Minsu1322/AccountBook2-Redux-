@@ -1,14 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { Detailstyle } from "../style/Detailstyle";
-import {
-  ReceiptStyle,
-  ButtonStyle,
-  ButtonContainer,
-} from "../style/ReceiptStyle";
-// import { ListContext } from "../context/ListContext";
+
 import { useDispatch, useSelector } from "react-redux";
-import { addItem, setList, removeItem } from "../redux/slices/listSlice";
+import { addItem, removeItem } from "../redux/slices/listSlice";
 
 const Detail = () => {
   const list = useSelector((state) => state.list.list);
@@ -102,7 +97,6 @@ const Detail = () => {
             onChange={(e) => setContent(e.target.value)}
           />
         </div>
-        <ButtonContainer></ButtonContainer>
         <button onClick={handleUpdate}>수정</button>
         <button onClick={handleDelete}>삭제</button>
         <button onClick={() => navigate("/")}>뒤로가기</button>

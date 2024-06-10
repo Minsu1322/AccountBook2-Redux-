@@ -5,11 +5,13 @@ export const CalenderContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   margin: 20px;
-  border: solid 3px aqua;
+  border-radius: 30px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+  padding: 2.5rem;
 `;
 
 export const MonthButton = styled.button`
-  background-color: ${(props) => (props.$isSelected ? "#3498db" : "white")};
+  background-color: ${(props) => (props.$isSelected ? "#d9bc97" : "white")};
   color: ${(props) => (props.$isSelected ? "white" : "black")};
   border: 1px solid #ccc;
   border-radius: 5px;

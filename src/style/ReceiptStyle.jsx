@@ -2,10 +2,11 @@ import styled from "styled-components";
 
 export const ReceiptStyle = styled.div`
   display: flex;
-  border: 2px solid green;
   margin: 20px;
   font-size: 20px;
   padding: 20px;
+  border-radius: 30px;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
 `;
 
 export const ButtonContainer = styled.div`
@@ -14,9 +15,11 @@ export const ButtonContainer = styled.div`
 `;
 
 export const ButtonStyle = styled.button`
-  width: 60px;
   height: 60px;
   padding: 10px;
-  margin-left: 10px;
   border-radius: 15px;
+  padding: 0.3rem;
+  margin-left: 10px;
+  width: 4rem;
+  box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.5);
 `;

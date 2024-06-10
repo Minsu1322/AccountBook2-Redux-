@@ -1,11 +1,9 @@
-import React, { useContext, useState } from "react";
 import {
   ReceiptStyle,
   ButtonStyle,
   ButtonContainer,
 } from "../style/ReceiptStyle";
 import { Link } from "react-router-dom";
-// import { ListContext } from "../context/ListContext";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../redux/slices/listSlice";
 
@@ -32,10 +30,7 @@ const Receipt = () => {
   });
 
   return (
-    <div>
-      {console.log(selectedMonth)}
-      {console.log(list)}
-
+    <div style={{ backgroundColor: "transparent" }}>
       {filteredList.map((entry, index) => (
         <ReceiptStyle key={index}>
           {entry.date}

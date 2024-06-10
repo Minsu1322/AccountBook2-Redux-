@@ -1,16 +1,14 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InputFormStyle } from "../style/InputFormStyle";
 import Receipt from "./Receipt";
 import Calender from "./Calender";
 import { v4 as uuidv4 } from "uuid";
-// import { ListContext } from "../context/ListContext";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, setList } from "../redux/slices/listSlice";
 
 const InputForm = () => {
   const list = useSelector((state) => state.list.list);
   const dispatch = useDispatch();
-  const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
   const [date, setDate] = useState("");
   const [item, setItem] = useState("");
@@ -45,7 +43,6 @@ const InputForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(addItem(buyList));
-    // setList(updatedList);
     localStorage.setItem("buyList", JSON.stringify([...list, buyList]));
   };
 
@@ -102,13 +99,8 @@ const InputForm = () => {
         </div>
         <button type="submit">저장</button>
       </InputFormStyle>
-      <Calender
-      // selectedMonth={selectedMonth}
-      // setSelectedMonth={setSelectedMonth}
-      />
-      <Receipt
-      // list={list} setList={setList} selectedMonth={selectedMonth}
-      />
+      <Calender />
+      <Receipt />
     </>
   );
 };
