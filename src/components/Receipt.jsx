@@ -6,6 +6,9 @@ import {
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { removeItem } from "../redux/slices/listSlice";
+import { authApi } from "./../../api/axios";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Receipt = () => {
   const list = useSelector((state) => state.list.list);
@@ -13,7 +16,17 @@ const Receipt = () => {
   const selectedMonth = useSelector((state) => state.month.selectedMonth);
 
   if (selectedMonth === null) {
-    return <div>월을 선택해주세요</div>;
+    return (
+      <div
+        style={{
+          borderRadius: "20px",
+          margin: "0 20px 0 20px",
+          padding: "5px",
+        }}
+      >
+        "월" 을 선택해주세요
+      </div>
+    );
   }
 
   const handleDelete = (id) => {

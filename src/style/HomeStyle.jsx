@@ -6,7 +6,7 @@ export const StHomeDiv = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 50px;
+  margin-top: 180px;
   padding: 20px;
   background-color: #d8c4aa;
   border-radius: 50px;

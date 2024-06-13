@@ -32,5 +32,6 @@ export const InputFormStyle = styled.form`
     margin-left: 10px;
     width: 4rem;
     box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.5);
+    cursor: pointer;
   }
 `;

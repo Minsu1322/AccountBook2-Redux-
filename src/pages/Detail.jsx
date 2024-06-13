@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import { Detailstyle } from "../style/Detailstyle";
+import { Detailstyle, InputDivWrapper } from "../style/Detailstyle";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../redux/slices/listSlice";
+import Navbar from "../components/Navbar";
 
 const Detail = () => {
   const list = useSelector((state) => state.list.list);
@@ -52,8 +53,10 @@ const Detail = () => {
 
   return (
     <>
+      <Navbar />
+
       <Detailstyle>
-        <div>
+        <InputDivWrapper>
           <label>
             날짜
             <br />
@@ -63,8 +66,8 @@ const Detail = () => {
             value={date}
             onChange={(e) => setDate(e.target.value)}
           />
-        </div>
-        <div>
+        </InputDivWrapper>
+        <InputDivWrapper>
           <label>
             항목
             <br />
@@ -74,8 +77,8 @@ const Detail = () => {
             value={itemName}
             onChange={(e) => setItemName(e.target.value)}
           />
-        </div>
-        <div>
+        </InputDivWrapper>
+        <InputDivWrapper>
           <label>
             금액
             <br />
@@ -85,8 +88,8 @@ const Detail = () => {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
           />
-        </div>
-        <div>
+        </InputDivWrapper>
+        <InputDivWrapper>
           <label>
             내용
             <br />
@@ -96,7 +99,7 @@ const Detail = () => {
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-        </div>
+        </InputDivWrapper>
         <button onClick={handleUpdate}>수정</button>
         <button onClick={handleDelete}>삭제</button>
         <button onClick={() => navigate("/")}>뒤로가기</button>

@@ -15,6 +15,7 @@ export const Detailstyle = styled.div`
   padding: 30px;
   text-align: center;
   justify-content: center;
+  background-color: #d8c4aa;
 
   input {
     border-radius: 15px;
@@ -35,5 +36,13 @@ export const Detailstyle = styled.div`
     margin-right: auto;
     width: 25rem;
     box-shadow: 3px 2px 2px rgba(0, 0, 0, 0.5);
+  }
+`;
+
+export const InputDivWrapper = styled.div`
+  background-color: transparent;
+
+  label {
+    background-color: transparent;
   }
 `;
