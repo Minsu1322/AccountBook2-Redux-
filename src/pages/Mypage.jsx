@@ -5,6 +5,7 @@ import { authApi } from "../../api/axios";
 import { useDispatch, useSelector } from "react-redux";
 import { setNickname, setAvatar } from "../redux/slices/authSlice";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Mypage = () => {
   const dispatch = useDispatch();

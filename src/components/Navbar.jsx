@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import {
   NavBtnStyle,
   NavNicknameStyle,
-  NavTitleStyle,
   NavbarStyle,
 } from "../style/NavbarStyle";
 import { useDispatch, useSelector } from "react-redux";
@@ -36,21 +35,18 @@ const Navbar = () => {
       >
         마이페이지
       </NavBtnStyle>
-      <NavTitleStyle>지출 관리 시스템</NavTitleStyle>
-      {avatar && (
-        <img
-          src={avatar}
-          alt="Profile"
-          style={{ width: "50px", height: "50px", borderRadius: "50%" }}
-        />
-      )}
-      <NavNicknameStyle>"{nickname}"</NavNicknameStyle>
-      <NavBtnStyle
-        onClick={onHandleLogOut}
-        style={{ backgroundColor: "skyblue" }}
-      >
-        로그아웃
-      </NavBtnStyle>
+
+      <NavNicknameStyle>
+        {avatar && (
+          <img
+            src={avatar}
+            alt="Profile"
+            style={{ width: "3rem", height: "3rem", borderRadius: "50%" }}
+          />
+        )}
+        <span>{nickname} 님</span>
+      </NavNicknameStyle>
+      <NavBtnStyle onClick={onHandleLogOut}>로그아웃</NavBtnStyle>
     </NavbarStyle>
   );
 };

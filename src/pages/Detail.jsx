@@ -5,6 +5,9 @@ import { Detailstyle, InputDivWrapper } from "../style/Detailstyle";
 import { useDispatch, useSelector } from "react-redux";
 import { addItem, removeItem } from "../redux/slices/listSlice";
 import Navbar from "../components/Navbar";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import axios from "axios";
+import { jsonApi } from "../../api/axios";
 
 const Detail = () => {
   const list = useSelector((state) => state.list.list);
@@ -13,41 +16,63 @@ const Detail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [item, setItem] = useState(null);
-  const [date, setDate] = useState("");
   const [itemName, setItemName] = useState("");
-  const [price, setPrice] = useState("");
-  const [content, setContent] = useState("");
+  const [date, setDate] = useState("");
+  const [amount, setAmount] = useState("");
+  const [description, setDescription] = useState("");
+  const [createdBy, setCreatedBy] = useState("");
+  const queryClient = useQueryClient();
+
+  const {
+    data: expenses,
+    isLoading,
+    isError,
+  } = useQuery({
+    queryKey: ["expenses"],
+    queryFn: async () => {
+      const response = await jsonApi.get("/expenses");
+      return response.data;
+    },
+  });
 
   useEffect(() => {
-    const foundItem = list.find((entry) => entry.id === id);
-    if (foundItem) {
-      setItem(foundItem);
-      setDate(foundItem.date);
-      setItemName(foundItem.item);
-      setPrice(foundItem.price);
-      setContent(foundItem.content);
+    if (expenses) {
+      const foundItem = expenses.find((entry) => entry.id === id);
+      if (foundItem) {
+        setDate(foundItem.date);
+        setItemName(foundItem.item);
+        setAmount(foundItem.amount);
+        setDescription(foundItem.description);
+        setCreatedBy(foundItem.createdBy);
+      }
     }
-  }, [list, id]);
+  }, [expenses, id]);
 
-  if (!item) {
-    return <div>항목을 찾을 수 없습니다.</div>;
+  if (isLoading) {
+    return <div>로딩중</div>;
   }
 
-  const handleUpdate = () => {
-    const updatedList = list.map((entry) =>
-      entry.id === id
-        ? { ...entry, date, item: itemName, price, content }
-        : entry
-    );
-    dispatch(addItem(updatedList));
-    localStorage.setItem("buyList", JSON.stringify(updatedList));
+  if (isError) {
+    return <div>데이터 조회 중 오류가 발생했습니다.</div>;
+  }
+
+  const handleUpdate = async () => {
+    const updatedItem = {
+      id,
+      date,
+      item: itemName,
+      amount,
+      description,
+      createdBy,
+    };
+    await jsonApi.put(`/expenses/${id}`, updatedItem);
+    queryClient.invalidateQueries("expenses");
     navigate("/");
   };
 
-  const handleDelete = () => {
-    const updatedList = list.filter((entry) => entry.id !== id);
-    dispatch(removeItem(updatedList));
-    localStorage.setItem("buyList", JSON.stringify(updatedList));
+  const handleDelete = async () => {
+    await jsonApi.delete(`/expenses/${id}`);
+    queryClient.invalidateQueries("expenses");
     navigate("/");
   };
 
@@ -85,8 +110,8 @@ const Detail = () => {
           </label>
           <input
             type="text"
-            value={price}
-            onChange={(e) => setPrice(e.target.value)}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
           />
         </InputDivWrapper>
         <InputDivWrapper>
@@ -96,8 +121,8 @@ const Detail = () => {
           </label>
           <input
             type="text"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
           />
         </InputDivWrapper>
         <button onClick={handleUpdate}>수정</button>

@@ -1,24 +1,12 @@
 {
   "expenses": [
     {
-      "id": "46869445-5f9c-4650-941f-41bd9457bc07",
-      "month": 1,
-      "date": "2024-01-03",
-      "item": "개인사업",
-      "amount": 1000000,
-      "description": "테슬라 모델 3",
-      "createdBy": "Musk",
-      "userId": "41bd9457bc07-5f9c-4650-941f"
-    },
-    {
       "id": "a5c0d8de-d010-4d07-9934-29765051a7ea",
-      "month": 1,
       "date": "2024-01-07",
       "item": "개인사업",
       "amount": 1000,
       "description": "X(구 트위터)",
-      "createdBy": "Musk",
-      "userId": "41b13327bc07-5f9c-4650-941f"
+      "createdBy": "Musk"
     },
     {
       "id": "0d0a966e-5c35-4bf0-aca4-f2b1265a432d",
@@ -69,6 +57,33 @@
       "description": "세광양대창",
       "createdBy": "Me",
       "userId": "4111207-5f9c-4e20-912f"
+    },
+    {
+      "id": "a6430fe1-d4fc-4f15-bc5a-1c248bd7580b",
+      "date": "2024-06-08",
+      "item": "food",
+      "amount": "5555",
+      "description": "옷쇼핑",
+      "createdBy": "닉네임1325",
+      "userId": "test1325"
+    },
+    {
+      "id": "c959cd9b-4f17-4a47-886f-eadf7d460167",
+      "date": "2024-06-06",
+      "item": "회식",
+      "amount": "200000",
+      "description": "스터디회식",
+      "createdBy": "김민수",
+      "userId": "test1325"
+    },
+    {
+      "id": "9c05b6d5-1ba5-4214-be35-1c00bd7b453c",
+      "date": "2024-06-19",
+      "item": "fruit",
+      "amount": "5000",
+      "description": "apple",
+      "createdBy": "김민수",
+      "userId": "test1325"
     }
   ]
 }

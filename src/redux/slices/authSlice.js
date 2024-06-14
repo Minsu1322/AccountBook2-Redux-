@@ -6,6 +6,7 @@ const initialState = {
   password: localStorage.getItem("password") || "",
   id: localStorage.getItem("id") || "",
   avatar: null,
+  userId: "",
 };
 
 const authSlice = createSlice({

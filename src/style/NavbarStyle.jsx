@@ -19,34 +19,27 @@ export const NavBtnStyle = styled.button`
   cursor: pointer;
 `;
 
-export const NavTitleStyle = styled.span`
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background-color: transparent;
-  padding: 1rem;
-  border-radius: 15px;
-  font-size: 50px;
-  font-weight: 800;
-  font-family: monospace;
-  color: #0e0e0d78;
-
-  flex-grow: 1;
-  text-align: center;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-`;
-
 export const NavNicknameStyle = styled.span`
-  text-align: center;
   background-color: transparent;
   border-radius: 15px;
   border: 1px solid black;
-  padding: 10px;
-  font-size: 16px;
+  font-size: 32px;
   font-weight: 800;
   font-family: monospace;
   color: #0e0e0d78;
-  margin-right: 5px;
+  margin-right: 15px;
+
+  padding: 7px;
+  display: flex;
+  img {
+    margin: -5px 5px 0 5px;
+    display: block;
+  }
+
+  span {
+    background-color: transparent;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5px;
+  }
 `;

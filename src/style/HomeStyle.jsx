@@ -6,10 +6,9 @@ export const StHomeDiv = styled.div`
   align-items: center;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 180px;
+  margin-top: 80px;
   padding: 20px;
   background-color: #d8c4aa;
   border-radius: 50px;
-  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.75);
   font-family: Georgia, "Times New Roman", Times, serif;
 `;

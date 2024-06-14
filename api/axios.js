@@ -7,7 +7,7 @@ export const authApi = axios.create({
 });
 
 export const jsonApi = axios.create({
-  baseURL: "http://localhost:5055",
+  baseURL: "http://localhost:5000",
 });
 
 authApi.interceptors.request.use(
