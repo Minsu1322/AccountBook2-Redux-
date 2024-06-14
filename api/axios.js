@@ -7,7 +7,7 @@ export const authApi = axios.create({
 });
 
 export const jsonApi = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://fierce-plume-orchestra.glitch.me",
 });
 
 authApi.interceptors.request.use(
